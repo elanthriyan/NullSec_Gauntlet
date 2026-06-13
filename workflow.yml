@@ -1,0 +1,38 @@
+# .github/workflows/ci.yml
+# This workflow was found in a leaked repo backup.
+# A malicious PR was merged containing an injected payload in the PR title.
+
+name: CI Pipeline
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+env:
+  DEPLOY_SECRET: ${{ secrets.DEPLOY_SECRET }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log PR metadata
+        run: |
+          echo "Running CI for PR by: ${{ github.actor }}"
+          echo "Branch: ${{ github.head_ref }}"
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+# QUESTION FOR YOU:
+# Which line in the "Log PR metadata" step is vulnerable to injection?
+# What could an attacker put in the PR title to execute arbitrary shell commands?
+# (Write your answer as a comment in solve.py)

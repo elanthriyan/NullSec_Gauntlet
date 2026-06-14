@@ -50,24 +50,4 @@ cd challenge_01
 python exploit.py
 ```
 
----
-
-## Flags (Organizer Reference)
-
-| # | Flag                                              |
-|---|---------------------------------------------------|
-| 01| FLAG{RACE_COND_OVERFLOW} (base64 in response)     |
-| 02| Decoded from XOR in server at runtime             |
-| 03| FLAG{M4ss_4ss1gnm3nt_0wned}                       |
-| 04| FLAG{IDOR_<sha256 prefix>} (computed at runtime)  |
-| 05| FLAG{GHtHub_Actions_Injection}  (base64 decoded)  |
-
----
-
-## Organizer Notes
-
-- All servers bind to `127.0.0.1` only — no network exposure
-- Challenge 04 uses `random.seed(42)` so the admin report ID is deterministic
-- Challenge 02 has a `/reset` endpoint so participants can retry the race
-- Encourage participants to read the full docstring at the top of each file
 
